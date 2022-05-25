@@ -101,9 +101,13 @@
     <script>
       //var msgChat=document.querySelector(".wrapper");
       /*document.querySelector(".reset").addEventListener("click",()=>{
-        location.reload();
+        location.reload(true);
       })*/
       const imp_features = {{ data | tojson }};
+      for(let j=0;j<imp_features.length;j++)
+      {
+        imp_features[j]=imp_features[j].replaceAll('_',' ');
+      }
       let i=0;
       var msgBot=`
         <div class="item">
@@ -154,6 +158,7 @@
         $(".input-field").empty();
         var resetBtn=`<button class="reset">Reset</button>`;
         $(".input-field").append(resetBtn);
+        document.querySelector(".gap").scrollIntoView(true);
           });
           /*$.ajax({
             url:'/symptoms',
@@ -187,7 +192,7 @@
           $(".box").append(msgBot);
           document.querySelector(".gap").scrollIntoView(true);
           //document.querySelectorAll(".gap")[1].scrollIntoView(true);
-        },1500)
+        },500)
         }
        })
 
